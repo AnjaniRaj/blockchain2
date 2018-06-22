@@ -5,13 +5,12 @@ CORE_PEER_ADDRESS=peer$1.org1.example.com:7051
 
 peer channel fetch 0 genesis_block.pb -o orderer.example.com:7050 -c "mychannel" 
 res=$?
-if [ $res -ne 0 ] ; then
-        exit 1
+#if [ $res -ne 0 ] ; then
+#       exit 1
 
 sleep 5
 echo "block fetched"
 
 peer channel join -b genesis_block.pb
 echo "channel joined"
-#peer chaincode install -n mycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
-#peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+peer chaincode install -n mycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
